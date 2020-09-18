@@ -14,8 +14,16 @@ spec:
         value: "192.168.1.164"
       - name: BROKER_PORT
         value: "30092"
- ------
- apiVersion: v1
+      - name: ZK_PORT
+        value: "30181"
+      - name: REGISTRY_PORT
+        value: "30081"
+      - name: REST_PORT
+        value: "30082"            
+      - name: CONNECT_PORT
+        value: "30083"   
+---
+apiVersion: v1
 kind: Service
 metadata:
   name: my-service
@@ -30,19 +38,19 @@ spec:
       nodePort: 30030
     - name: zk
       port: 2181
-      targetPort: 2181
+      targetPort: 30181
       nodePort: 30181
-    - name: schema1
+    - name: schema
       port: 8081
-      targetPort: 8081
+      targetPort: 30081
       nodePort: 30081
-    - name: schema2
+    - name: rest
       port: 8082
-      targetPort: 8082
+      targetPort: 30082
       nodePort: 30082
-    - name: schema3
+    - name: connect
       port: 8083
-      targetPort: 8083
+      targetPort: 30083
       nodePort: 30083
     - name: jmx1
       port: 9581
@@ -68,7 +76,3 @@ spec:
       port: 9092
       targetPort: 30092
       nodePort: 30092
-    - name: debug
-      port: 5005
-      targetPort: 5005
-      nodePort: 30005
