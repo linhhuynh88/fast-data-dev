@@ -1,0 +1,65 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kafka
+  labels:
+    app: kafka
+spec:
+  containers:
+    - name: kakfa
+      image: lensesio/fast-data-dev:latest
+      imagePullPolicy: Always
+-----------
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  type: NodePort
+  selector:
+    app: kafka
+  ports:
+    - name: web
+      port: 3030
+      targetPort: 3030
+      nodePort: 30030
+    - name: zk
+      port: 2181
+      targetPort: 2181
+      nodePort: 30181
+    - name: schema1
+      port: 8081
+      targetPort: 8081
+      nodePort: 30081
+    - name: schema2
+      port: 8082
+      targetPort: 8082
+      nodePort: 30082
+    - name: schema3
+      port: 8083
+      targetPort: 8083
+      nodePort: 30083
+    - name: jmx1
+      port: 9581
+      targetPort: 9581
+      nodePort: 30581
+    - name: jmx2
+      port: 9582
+      targetPort: 9582
+      nodePort: 30582
+    - name: jmx3
+      port: 9583
+      targetPort: 9583
+      nodePort: 30583
+    - name: jmx4
+      port: 9584
+      targetPort: 9584
+      nodePort: 30584
+    - name: jmx5
+      port: 9585
+      targetPort: 9585
+      nodePort: 30585
+    - name: broker
+      port: 9092
+      targetPort: 9092
+      nodePort: 30092
