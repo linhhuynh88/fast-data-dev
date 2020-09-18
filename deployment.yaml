@@ -14,8 +14,6 @@ spec:
         value: "192.168.1.164"
       - name: BROKER_PORT
         value: "30092"
-      - name: ZK_PORT
-        value: "30181"
       - name: REGISTRY_PORT
         value: "30081"
       - name: REST_PORT
@@ -38,7 +36,7 @@ spec:
       nodePort: 30030
     - name: zk
       port: 2181
-      targetPort: 30181
+      targetPort: 2181
       nodePort: 30181
     - name: schema
       port: 8081
