@@ -9,6 +9,11 @@ spec:
     - name: kakfa
       image: lensesio/fast-data-dev:latest
       imagePullPolicy: Always
+      env:
+      - name: KAFKA_DEBUG
+        value: "y"
+      - name: CONNECT_DEBUG
+        value: "y"
 -----------
 apiVersion: v1
 kind: Service
@@ -63,3 +68,8 @@ spec:
       port: 9092
       targetPort: 9092
       nodePort: 30092
+    - name: debug
+      port: 5005
+      targetPort: 5005
+      nodePort: 30005
+
